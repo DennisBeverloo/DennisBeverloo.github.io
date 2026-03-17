@@ -1,0 +1,151 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0c1a0e;
+  --surface: #142918;
+  --border: #254d2a;
+  --accent: #e8a93a;
+  --accent-hover: #f5bf60;
+  --text: #f0ece0;
+  --text-muted: #7aaa80;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+
+header {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+header p {
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Games grid */
+
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Tile */
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  will-change: transform;
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) scale(1);
+}
+
+.tile:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(232, 169, 58, 0.15);
+}
+
+/* Glare overlay */
+
+.tile-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tile-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.tile-info {
+  flex: 1;
+}
+
+.tile-info h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.tile-info p {
+  margin-top: 0.35rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Play button */
+
+.tile-btn {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.45rem 1rem;
+  background: var(--accent);
+  color: #1a1a00;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.tile-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
